@@ -1,0 +1,17 @@
+</$objtype/mkfile
+TARG=tdhs2
+BIN=$home/bin/$objtype
+
+OFILES=\
+	main.$O\
+	stretch.$O\
+
+HFILES=\
+	stretch.h\
+
+default:V: all
+
+</sys/src/cmd/mkone
+
+CC=pcc
+CFLAGS=$CFLAGS -c -p -D_POSIX_SOURCE
