@@ -1,3 +1,27 @@
+Essentially a port of the demo app to plan 9 with a few differences:
+
+- remove all wav stuff;  work only on pcm audio
+- assume input from stdin and output to stdout
+- hardcode sampling frequency, number of channels to /dev/audio defaults
+- uses pcmconv(1) for resampling with -s
+
+This enables its use with [pplay](https://github.com/qwx9/pplay)
+and similar in audio editing pipelines.
+
+The port mixes native code with unmodified alien source using Sigrid's
+[npe](https://git.sr.ht/~ft/npe), and thus requires it.
+
+Examples:
+
+	# see [play ought to be enough for everyone](http://nopenopenope.net/posts/play)
+	; play -o /fd/1 quality83.mp3 | audio/stretch -r 0.6 -s | audio/pplay
+
+	From within pplay:
+	| audio/stretch -r 1.1 | pcmrev | audio/wavenc >samp.wav
+
+
+Original README below:
+
 ////////////////////////////////////////////////////////////////////////////
 //                        **** AUDIO-STRETCH ****                         //
 //                      Time Domain Harmonic Scaler                       //
